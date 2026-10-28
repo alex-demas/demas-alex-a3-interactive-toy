@@ -11,8 +11,12 @@ namespace MohawkGame2D
     {
         // CLASSES
         Ball ball = new Ball();
+        BallController ballController = new BallController();
+        BallCalculator ballCalculator = new BallCalculator();
+        BackgroundController backgroundController = new BackgroundController();
+
         // CONFIG
-        Color BACKGROUND_COLOR = new Color(240);
+        Color BACKGROUND_COLOR = new Color(0, 87, 154);
         float GRAVITY = 800f;
         // VARIABLES
         float ballX = 0f;
@@ -30,9 +34,9 @@ namespace MohawkGame2D
             Window.SetSize(400, 400);
             Window.ClearBackground(BACKGROUND_COLOR);
 
-            // CREATE BALL
-            ball.Setup();
-            
+            ballCalculator.Setup(ball);
+            ballController.Setup(ball);
+            backgroundController.Setup(ball);
         }
 
         ///     Update runs every frame.
@@ -41,8 +45,11 @@ namespace MohawkGame2D
             // Clear last instances drawn
             Window.ClearBackground(BACKGROUND_COLOR);
 
-            // Update ball
+            // Updates
+            backgroundController.Update();
+            ballController.Update();
             ball.Update();
+            ballCalculator.Update();
         }
     }
 

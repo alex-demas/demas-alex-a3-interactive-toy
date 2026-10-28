@@ -1,51 +1,58 @@
-﻿using System;
+using System;
 using System.Numerics;
-using System.Reflection.Metadata;
+using System.Diagnostics;
 
 namespace MohawkGame2D
 {
     internal class Ball
     {
         // CONFIG
-        float RADIUS = 20f;
-        float GRAVITY = 800f;
-        // BALL VARIABLES
-        float speed = 0f;
-        float ballX = Window.Size.X / 2f;
-        float ballY = Window.Size.Y - 20; // last number is radius
-        int directionX = 1; // 1 for right, -1 for left
-        int directionY = -1; // 1 for down, -1 for up
-        Vector2 position = new Vector2(Window.Size.X / 2f, Window.Size.Y - 20f);
-        Vector2 velocity = new Vector2(0f, 0f);
+        public float RADIUS = 20f;
+        public float DEFAULT_GRAVITY = 5f;
+        // PUBLIC VARIABLES
+        public static float gravity = 0f;
+        public static float speed = 0f;
+        public static int directionX = 0; // 1 for right, -1 for left
+        public static int directionY = 0; // 1 for down, -1 for up
+        public Vector2 position = new Vector2(Window.Size.X / 2f, Window.Size.Y - 20f);
+        public static Vector2 velocity = new Vector2(0f, 0f);
+        public static Stopwatch watch;
+        // LOCAL VARIABLES
+        int bounces = 0;
+
+
         Color ballColor = Color.Red;
 
         void DrawBall()
         {
+            Draw.LineColor = Color.Black;
+            Draw.LineSize = 3;
             Draw.FillColor = ballColor;
             Draw.Circle(position, RADIUS);
         }
 
-        public void Setup()
-        {
-            speed = 150f;
-            velocity = new Vector2(5f, 5f);
-        }
+        //public void Setup()
+        //{
+
+        //}
 
         public void Update()
         {
+            float dt = Time.DeltaTime;
+            //velocity.Y += GRAVITY * dt;
 
-            if (Input.IsKeyboardKeyDown(KeyboardKey.Space))
+            if (watch != null)
             {
-                Console.WriteLine("B1");
-                float dt = Time.DeltaTime;
-                velocity.Y = -400f;
-                velocity.Y += GRAVITY * dt;
-                position.X += velocity.X * speed * dt;
-                position.Y += velocity.Y * dt;
+                velocity.Y += gravity * watch.ElapsedMilliseconds/100000;
+                Console.WriteLine(watch.ElapsedMilliseconds);
             }
 
-            DrawBall();
+            position.X += velocity.X * speed * dt;
+            position.Y += velocity.Y * speed * dt;
 
+            
+
+            DrawBall();
         }
 
     }
