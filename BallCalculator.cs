@@ -15,6 +15,12 @@ namespace MohawkGame2D
             ball = existingBall;
         }
 
+        // Decrease the speed of the ball each time it bounces
+        void DecreaseSpeed()
+        {
+            Ball.speed = Ball.speed * 0.66f;
+        }
+
         public void Update()
         {
             SetDirectionX();
@@ -49,6 +55,7 @@ namespace MohawkGame2D
             {
                 Ball.directionY = -1;
                 Console.WriteLine("Out of bottom");
+                DecreaseSpeed();
                 Ball.velocity.Y = -Math.Abs(Ball.velocity.Y);
             }
         }

@@ -86,8 +86,6 @@ namespace MohawkGame2D
                 Ball.velocity = velocity / dragDistance;
 
                 Ball.watch = Stopwatch.StartNew();
-
-                Console.WriteLine(velocity);
             }
         }
         // Get the direction the ball should move in the X direction based on its position

@@ -44,13 +44,10 @@ namespace MohawkGame2D
             if (watch != null)
             {
                 velocity.Y += gravity * watch.ElapsedMilliseconds/100000;
-                Console.WriteLine(watch.ElapsedMilliseconds);
             }
 
             position.X += velocity.X * speed * dt;
             position.Y += velocity.Y * speed * dt;
-
-            
 
             DrawBall();
         }
