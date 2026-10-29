@@ -8,7 +8,7 @@ namespace MohawkGame2D
         // CLASSES
         private Ball ball;
         // VARAIBLES
-        int grassHeight = 10;
+        int grassHeight = 20;
 
         public void Setup(Ball existingBall)
         {
@@ -45,7 +45,7 @@ namespace MohawkGame2D
                 Console.WriteLine("Out of top");
                 Ball.velocity.Y = Math.Abs(Ball.velocity.Y);
             }
-            else if (ball.position.Y >= Window.Size.Y - ball.RADIUS)
+            else if (ball.position.Y >= Window.Size.Y - ball.RADIUS - grassHeight)
             {
                 Ball.directionY = -1;
                 Console.WriteLine("Out of bottom");

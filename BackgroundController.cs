@@ -9,12 +9,13 @@ namespace MohawkGame2D
         private Ball ball;
 
         // VARIABLES
-        float height = 500f;
-        float width = 1300f;
+        float height = 600f;
+        float width = 1500f;
         Color colorLight = new Color(22, 174, 241);
         Color colorMid = new Color(0, 152, 219);
         Color colorDark = new Color(0, 109, 176);
-        Color grassColor = new Color(23, 239, 63);
+        Color grassColor = new Color(0, 154, 41);
+        int grassHeight = 20;
 
         public void Setup(Ball existingBall)
         {
@@ -29,35 +30,37 @@ namespace MohawkGame2D
             // Darkest shape
             Draw.FillColor = colorDark;
             Draw.Ellipse(
-                (ballPosition.X * 0.9f) + (Window.Size.X / 2),
-                (ballPosition.Y * 0.9f) + (Window.Size.Y * 0.5f),
+                (Window.Size.X / 2),
+                 (ballPosition.Y * -1f) + (Window.Size.Y * 1f),
                 width,
                 height
                 );
             // Middle shape
             Draw.FillColor = colorMid;
             Draw.Ellipse(
-                (ballPosition.X * 0.3f) + (Window.Size.X / 2),
-                (ballPosition.Y * 0.3f) + (Window.Size.Y),
+                (Window.Size.X / 2),
+                (ballPosition.Y * -1.5f) + (Window.Size.Y * 1.5f),
                 width,
                 height
                 );
             // Lightest shape
             Draw.FillColor = colorLight;
             Draw.Ellipse(
-                (ballPosition.X * 0.3f) + (Window.Size.X / 2),
-                (ballPosition.Y * 0.3f) + (Window.Size.Y * 2),
+                (Window.Size.X / 2),
+                (ballPosition.Y * -2.2f) + (Window.Size.Y * 2.2f),
                 width,
                 height
                 );
             // Grass shape
-            Draw.FillColor = colorLight;
+            Draw.LineColor = Color.Black;
+            Draw.LineSize = 3;
+            Draw.FillColor = grassColor;
             Draw.Rectangle(
-                0,
-                (ballPosition.Y * -0.3f) + (Window.Size.Y - 10),
-                Window.Width,
-                10
-                );
+                -5,
+                (Window.Size.Y + grassHeight*2) - ((ball.position.Y - 150) * 0.3f),
+                Window.Width + 10, // Offset the values so the black outline only shows on the top of the rectangle
+                grassHeight * 2
+             );
 
         }
         // Get the direction the ball should move in the X direction based on its position
