@@ -24,9 +24,7 @@ namespace MohawkGame2D
         float speed = 150f;
         Vector2 velocity = new Vector2(0f, 0f);
         Vector2 position = new Vector2(0f, 0f);
-        
-        ///     Setup runs once before the game loop begins.
-  
+          
 
         public void Setup()
         {

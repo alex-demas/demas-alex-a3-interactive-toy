@@ -16,14 +16,46 @@ namespace MohawkGame2D
         Color colorDark = new Color(0, 109, 176);
         Color grassColor = new Color(0, 154, 41);
         int grassHeight = 20;
+        // TRAIL VARIABLES
+        int trailSegments = 15;
+        Vector2[] trail = new Vector2[15];
 
+
+        // DRAW THE TRAIL BEHIND THE BALL
+        void DrawTrail()
+        {
+
+            // Shift all positions one index forward
+            for (int i = trailSegments - 1; i > 0; i--)
+            {
+                trail[i] = trail[i - 1];
+            }
+            // Store the newest position
+            trail[0] = ball.position;
+
+            // Draw the trail segments
+            for (int i = 0; i < trailSegments; i++)
+            {
+                Draw.LineSize = 0;
+                Draw.SetFillColor(Color.White);
+                Draw.Circle(
+                    trail[i].X,
+                    trail[i].Y,
+                    ball.RADIUS - i
+                    );
+            }
+        }
+
+        // SETUP
         public void Setup(Ball existingBall)
         {
             ball = existingBall;
         }
 
+        // UPDATE
         public void Update()
         {
+            //
             Vector2 ballPosition = ball.position;
 
             Draw.LineSize = 0;
@@ -62,9 +94,10 @@ namespace MohawkGame2D
                 grassHeight * 2
              );
 
-        }
-        // Get the direction the ball should move in the X direction based on its position
-       
+            // Draw trail
+            DrawTrail();
+
+        }       
 
     }
 }
