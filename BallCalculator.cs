@@ -45,7 +45,7 @@ namespace MohawkGame2D
         // Get the direction the ball should move in the Y direction based on its position
         public void SetDirectionY()
         {
-            if (ball.position.Y <= ball.RADIUS) // If the ball hits the top wall]
+            if (ball.position.Y <= ball.RADIUS) // If the ball hits the top wall
             {
                 Ball.directionY = 1;
                 Console.WriteLine("Out of top");

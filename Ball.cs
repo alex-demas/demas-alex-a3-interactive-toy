@@ -39,7 +39,6 @@ namespace MohawkGame2D
         public void Update()
         {
             float dt = Time.DeltaTime;
-            //velocity.Y += GRAVITY * dt;
 
             if (watch != null)
             {

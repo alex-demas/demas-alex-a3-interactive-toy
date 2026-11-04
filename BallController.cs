@@ -69,11 +69,11 @@ namespace MohawkGame2D
             }
             else if (Input.IsMouseButtonReleased(MouseButton.Left))
             {
-                // Launcht the ball when released
+                // Launch the ball when released
                 dragging = false;
                 Vector2 mousePosition = Input.GetMousePosition();
 
-                // Direction velocity
+                // Velocity direction
                 Vector2 velocity = ball.position - mousePosition;
 
                 // Direction
@@ -88,7 +88,6 @@ namespace MohawkGame2D
                 Ball.watch = Stopwatch.StartNew();
             }
         }
-        // Get the direction the ball should move in the X direction based on its position
 
     }
 }
